@@ -31,7 +31,7 @@ dependencies {
 	implementation("com.jayway.jsonpath:json-path:2.4.0")
 	implementation("io.github.microutils:kotlin-logging:1.6.24")
 	implementation("org.apache.commons:commons-lang3:3.5")
-	implementation("net.logstash.logback:logstash-logback-encoder:5.0")
+	implementation("net.logstash.logback:logstash-logback-encoder:7.2")
 	implementation("org.springframework.boot:spring-boot-devtools")
 	implementation ("io.sentry:sentry-spring-boot-starter:6.5.0")
 	implementation ("io.sentry:sentry-logback:6.5.0")
