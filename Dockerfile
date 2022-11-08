@@ -7,7 +7,8 @@ ENV TZ Asia/Seoul
 ENV LANG en_US.UTF-8
 RUN yum -y install wget
 RUN yum -y install net-tools
-RUN yum -y install java
+#RUN yum -y install java
+RUN yum -y install java-11-openjdk-devel
 RUN mkdir -p /levvels
 RUN mkdir -p /levvels/web
 RUN mkdir -p /levvels/build

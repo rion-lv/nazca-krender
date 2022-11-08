@@ -111,40 +111,40 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ghcr.io/tf-dive/nazca-krender:${{ env.GIT_REF }}
-  deploy:
-    runs-on: ubuntu-latest
-    needs: publish
-    steps:
-      - name: Setup Kustomize
-        uses: imranismail/setup-kustomize@v1
-
-      - name: Checkout kustomize repository
-        uses: actions/checkout@v2
-        with:
-          repository: tf-dive/kubekube-web3
-          ref: main
-          token: ${{ secrets.KUBEKUBE_PAT }}
-          path: kubekube-web3
-
-      - name: Checkout kustomize repository
-        uses: actions/checkout@v2
-        with:
-          repository: tf-dive/kubekube-web3
-          ref: main
-          token: ${{ secrets.KUBEKUBE_PAT }}
-          path: kubekube-web3
-
-      - name: nazca-krender Update Kubernetes resources
-        run: |
-          pwd
-          echo ghcr.io/tf-dive/nazca-krender@\${{ needs.publish.outputs.nazca-krender-digest }}
-          cd ${{ needs.publish.outputs.kube-repo }}/${{ needs.publish.outputs.kube-scheme }}/recipes/${{ needs.publish.outputs.kube-ns }}/nazca-krender/overlays/${{ needs.publish.outputs.scheme }}
-          kustomize edit set image ghcr.io/tf-dive/nazca-krender@\${{ needs.publish.outputs.nazca-krender-digest }}
-          cat kustomization.yaml
-      - name: nazca-krender Commit manifest files
-        run: |
-          cd ${{ needs.publish.outputs.kube-repo }}
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "github-actions"
-          git commit -am "Update nazca-krender image tag(${{ needs.publish.outputs.nazca-krender-digest }})"
-          git push -u origin main
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: publish
+#    steps:
+#      - name: Setup Kustomize
+#        uses: imranismail/setup-kustomize@v1
+#
+#      - name: Checkout kustomize repository
+#        uses: actions/checkout@v2
+#        with:
+#          repository: tf-dive/kubekube-web3
+#          ref: main
+#          token: ${{ secrets.KUBEKUBE_PAT }}
+#          path: kubekube-web3
+#
+#      - name: Checkout kustomize repository
+#        uses: actions/checkout@v2
+#        with:
+#          repository: tf-dive/kubekube-web3
+#          ref: main
+#          token: ${{ secrets.KUBEKUBE_PAT }}
+#          path: kubekube-web3
+#
+#      - name: nazca-krender Update Kubernetes resources
+#        run: |
+#          pwd
+#          echo ghcr.io/tf-dive/nazca-krender@\${{ needs.publish.outputs.nazca-krender-digest }}
+#          cd ${{ needs.publish.outputs.kube-repo }}/${{ needs.publish.outputs.kube-scheme }}/recipes/${{ needs.publish.outputs.kube-ns }}/nazca-krender/overlays/${{ needs.publish.outputs.scheme }}
+#          kustomize edit set image ghcr.io/tf-dive/nazca-krender@\${{ needs.publish.outputs.nazca-krender-digest }}
+#          cat kustomization.yaml
+#      - name: nazca-krender Commit manifest files
+#        run: |
+#          cd ${{ needs.publish.outputs.kube-repo }}
+#          git config --global user.email "github-actions@github.com"
+#          git config --global user.name "github-actions"
+#          git commit -am "Update nazca-krender image tag(${{ needs.publish.outputs.nazca-krender-digest }})"
+#          git push -u origin main
