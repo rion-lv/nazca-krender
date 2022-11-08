@@ -118,21 +118,25 @@ jobs:
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
 
+      - name: TOKEN
+        run: |
+          echo "token=${{ secrets.KUBEKUBE_PAT }}"       
+
       - name: Checkout kustomize repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           repository: tf-dive/kubekube-web3
           ref: main
           token: ${{ secrets.KUBEKUBE_PAT }}
           path: kubekube-web3
 
-#      - name: Checkout kustomize repository
-#        uses: actions/checkout@v2
-#        with:
-#          repository: tf-dive/kubekube-web3
-#          ref: main
-#          token: ${{ secrets.KUBEKUBE_PAT }}
-#          path: kubekube-web3
+      - name: Checkout kustomize repository
+        uses: actions/checkout@v2
+        with:
+          repository: tf-dive/kubekube-web3
+          ref: main
+          token: ${{ secrets.KUBEKUBE_PAT }}
+          path: kubekube-web3
 
       - name: nazca-krender Update Kubernetes resources
         run: |
