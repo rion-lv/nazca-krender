@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.levvels.nazca.render"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_11
 repositories {
 	mavenCentral()
 }
