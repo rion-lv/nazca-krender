@@ -1,4 +1,4 @@
-package com.kakaoenterprise.kwp.linkbine.manager.infrastructure.extensions.function
+package com.levvels.nazca.render.infrastructure.extensions.function
 
 /**
  * Return null if collection is empty, or result of calling [action]

@@ -1,4 +1,4 @@
-package com.kakaoenterprise.kwp.linkbine.manager.infrastructure.extensions.function
+package com.levvels.nazca.render.infrastructure.extensions.function
 
 /**
  * Returns false if T is null, or predicated boolean value

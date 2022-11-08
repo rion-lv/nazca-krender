@@ -1,4 +1,4 @@
-package com.kakaoenterprise.kwp.linkbine.manager.infrastructure.extensions.function
+package com.levvels.nazca.render.infrastructure.extensions.function
 
 /**
  * Returns first parameter if boolean value is true, else second parameter

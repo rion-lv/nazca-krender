@@ -1,5 +1,40 @@
+# 공통설정.
 server:
   port: 8083
+sentry:
+  dsn: https://8e84abb5741e46e684cd6c3601bb3a02@o1343718.ingest.sentry.io/6767373
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  tracesSampleRate: 0.0
+  logging:
+    enabled: false
+  environment: local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      statsd:
+        enabled: true
+        host: ${NODE_IP:localhost}
+        port: ${STATSD_PORT:8125}
+        flavor: datadog
+    tags:
+      service_group: 'aptz'
+      service: ${DD_SERVICE:'nazca-render'}
+      pod: ${POD_NAME:'nazca-render'}
+    distribution:
+      percentiles:
+        all: [ 0.0, 0.5, 0.95, 0.99 ]
+
+# 로컬
+---
 spring:
   devtools:
     livereload:
@@ -19,3 +54,81 @@ search:
   sas:
     host: https://nazca-sas-dev.aptz.codes
     port: 443
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      statsd:
+        enabled: true
+        host: ${NODE_IP:localhost}
+        port: ${STATSD_PORT:8125}
+        flavor: datadog
+    tags:
+      service_group: 'aptz'
+      service: ${DD_SERVICE:'nazca-render'}
+      pod: ${POD_NAME:'nazca-render'}
+    distribution:
+      percentiles:
+        all: [ 0.0, 0.5, 0.95, 0.99 ]
+sentry:
+  dsn: https://8e84abb5741e46e684cd6c3601bb3a02@o1343718.ingest.sentry.io/6767373
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  tracesSampleRate: 0.0
+  logging:
+    enabled: false
+  environment: local
+
+# 개발서버
+---
+spring:
+  config:
+    activate:
+      on-profile: develop
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: utf-8
+    cache: true
+search:
+  sas:
+    host: http://nazca-sas-dev
+    port: 8080
+
+# sbx서버
+---
+spring:
+  config:
+    activate:
+      on-profile: release
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: utf-8
+    cache: true
+search:
+  sas:
+    host: http://nazca-sas-sbx
+    port: 8080
+
+---
+# 운영
+spring:
+  config:
+    activate:
+      on-profile: production
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: utf-8
+    cache: true
+search:
+  sas:
+    host: http://nazca-sas-prod
+    port: 8080
