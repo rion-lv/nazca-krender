@@ -25,7 +25,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-allopen")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation ("com.googlecode.json-simple:json-simple:1.1.1")
-	implementation ("com.squareup.okhttp3:okhttp:4.0.1")
+	implementation ("com.squareup.okhttp3:okhttp:4.10.0")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("com.jayway.jsonpath:json-path:2.4.0")
