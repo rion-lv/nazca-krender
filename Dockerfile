@@ -13,5 +13,5 @@ RUN mkdir -p /levvels/web
 RUN mkdir -p /levvels/build
 ADD . /levvels/build
 WORKDIR /levvels/build/build/libs
-RUN cp nazca-render.jar /levvels/web
+RUN cp nazca-render.war /levvels/web
 WORKDIR /levvels/web
