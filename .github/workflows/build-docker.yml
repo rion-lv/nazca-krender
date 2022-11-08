@@ -130,14 +130,6 @@ jobs:
           token: ${{ secrets.KUBEKUBE_PAT }}
           path: kubekube-web3
 
-      - name: Checkout kustomize repository
-        uses: actions/checkout@v2
-        with:
-          repository: tf-dive/kubekube-web3
-          ref: main
-          token: ${{ secrets.KUBEKUBE_PAT }}
-          path: kubekube-web3
-
       - name: nazca-krender Update Kubernetes resources
         run: |
           pwd
