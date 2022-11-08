@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "Asia/Seoul"
+    commit-message:
+      prefix: ":robot:"
+    open-pull-requests-limit: 99
+    labels:
+      - "dependencies"

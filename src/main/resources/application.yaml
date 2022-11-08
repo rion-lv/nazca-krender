@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  thymeleaf:
+    cache: false
+  config:
+    activate:
+      on-profile: local
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: utf-8
+    cache: false
+
+search:
+  sas:
+    host: https://nazca-sas-dev.aptz.codes
+    port: 443
