@@ -1,6 +1,7 @@
 package com.levvels.nazca.render.domain.model
 import com.levvels.nazca.render.domain.util.TemplateUtils
 import org.json.simple.JSONObject
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.properties.Delegates
 class Debug {
     var renderParam = mutableListOf<MutableMap<String, String>>()
@@ -23,10 +24,9 @@ class Debug {
         tmTotal.also { this.tmTotal = it }
         return this
     }
-    fun buildImportDatas(templateUtils: TemplateUtils):Debug {
-
-        if(templateUtils.importDataList.isNotEmpty()){
-            for(importdata in templateUtils.importDataList){
+    fun buildImportDatas(importDataList:CopyOnWriteArrayList<JSONObject>):Debug {
+        if(importDataList.isNotEmpty()){
+            for(importdata in importDataList){
                 val map: MutableMap<String,Any> = mutableMapOf()
                 map["time"] = importdata["time"] as Long
                 map["path"] = importdata["path"] as String

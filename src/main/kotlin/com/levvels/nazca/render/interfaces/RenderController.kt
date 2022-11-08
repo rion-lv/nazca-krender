@@ -1,6 +1,7 @@
 package com.levvels.nazca.render.interfaces
 import com.levvels.nazca.render.domain.model.Debug
 import com.levvels.nazca.render.domain.service.RenderService
+import com.levvels.nazca.render.domain.util.TemplateUtils
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -18,8 +19,8 @@ class RenderController(
         val collectionId = parameters["collectionId"] ?: throw java.lang.Exception("collectionId 는 필수 파라미터입니다")
         val platform = parameters["platform"]?:"m"
         val render = parameters["render"]?:"nqapi"
-        val html: String = renderService.render(collectionId,platform,render, parameters)
-        return response(html)
+        val renderResult = renderService.render(collectionId,platform,render, parameters,TemplateUtils())
+        return response(renderResult.html)
     }
 
     @ResponseBody
@@ -29,16 +30,16 @@ class RenderController(
         val collectionId = parameters["collectionId"] ?: throw java.lang.Exception("collectionId 는 필수 파라미터입니다")
         val platform = parameters["platform"]?:"m"
         val render = parameters["render"]?:"nqapi"
-
+        val templateUtils:TemplateUtils = TemplateUtils()
         // Rendering
         val s = System.currentTimeMillis()
-        val html = renderService.render(collectionId, platform, render, parameters)
+        val renderResult = renderService.render(collectionId, platform, render, parameters,TemplateUtils())
 
         // Response
         val debugData: Debug = Debug().buildTmTotal(System.currentTimeMillis() - s)
                 .buildRequestParam(parameters)
-                .buildImportDatas(renderService.templateUtils)
-                .buildHtml(html)
+                .buildImportDatas(renderResult.importDataList)
+                .buildHtml(renderResult.html)
         val debugPage = renderService.debug(debugData)
         val responseHeaders = HttpHeaders()
         responseHeaders.add(HttpHeaders.CONTENT_TYPE, "text/html; charset=UTF-8")
