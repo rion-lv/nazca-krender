@@ -6,7 +6,7 @@ plugins {
 	war
 	idea
 	kotlin("jvm") version "1.4.30"
-	kotlin("plugin.spring") version "1.4.30"
+	kotlin("plugin.spring") version "1.7.20"
 }
 
 group = "com.levvels.nazca.render"
