@@ -27,8 +27,8 @@ management:
         flavor: datadog
     tags:
       service_group: 'aptz'
-      service: ${DD_SERVICE:'nazca-render'}
-      pod: ${POD_NAME:'nazca-render'}
+      service: ${DD_SERVICE:'nazca-krender'}
+      pod: ${POD_NAME:'nazca-krender'}
     distribution:
       percentiles:
         all: [ 0.0, 0.5, 0.95, 0.99 ]
@@ -71,8 +71,8 @@ management:
         flavor: datadog
     tags:
       service_group: 'aptz'
-      service: ${DD_SERVICE:'nazca-render'}
-      pod: ${POD_NAME:'nazca-render'}
+      service: ${DD_SERVICE:'nazca-krender'}
+      pod: ${POD_NAME:'nazca-krender'}
     distribution:
       percentiles:
         all: [ 0.0, 0.5, 0.95, 0.99 ]

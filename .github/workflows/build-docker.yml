@@ -119,20 +119,20 @@ jobs:
         uses: imranismail/setup-kustomize@v1
 
       - name: Checkout kustomize repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: tf-dive/kubekube-web3
           ref: main
           token: ${{ secrets.KUBEKUBE_PAT }}
           path: kubekube-web3
 
-      - name: Checkout kustomize repository
-        uses: actions/checkout@v2
-        with:
-          repository: tf-dive/kubekube-web3
-          ref: main
-          token: ${{ secrets.KUBEKUBE_PAT }}
-          path: kubekube-web3
+#      - name: Checkout kustomize repository
+#        uses: actions/checkout@v2
+#        with:
+#          repository: tf-dive/kubekube-web3
+#          ref: main
+#          token: ${{ secrets.KUBEKUBE_PAT }}
+#          path: kubekube-web3
 
       - name: nazca-krender Update Kubernetes resources
         run: |
