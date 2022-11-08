@@ -29,7 +29,7 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("com.jayway.jsonpath:json-path:2.4.0")
-	implementation("io.github.microutils:kotlin-logging:1.6.24")
+	implementation("io.github.microutils:kotlin-logging:3.0.4")
 	implementation("org.apache.commons:commons-lang3:3.5")
 	implementation("net.logstash.logback:logstash-logback-encoder:5.0")
 	implementation("org.springframework.boot:spring-boot-devtools")
