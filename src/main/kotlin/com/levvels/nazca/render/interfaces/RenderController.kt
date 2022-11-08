@@ -30,7 +30,6 @@ class RenderController(
         val collectionId = parameters["collectionId"] ?: throw java.lang.Exception("collectionId 는 필수 파라미터입니다")
         val platform = parameters["platform"]?:"m"
         val render = parameters["render"]?:"nqapi"
-        val templateUtils:TemplateUtils = TemplateUtils()
         // Rendering
         val s = System.currentTimeMillis()
         val renderResult = renderService.render(collectionId, platform, render, parameters,TemplateUtils())
