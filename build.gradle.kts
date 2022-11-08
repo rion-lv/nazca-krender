@@ -34,7 +34,7 @@ dependencies {
 	implementation("net.logstash.logback:logstash-logback-encoder:5.0")
 	implementation("org.springframework.boot:spring-boot-devtools")
 	implementation ("io.sentry:sentry-spring-boot-starter:6.5.0")
-	implementation ("io.sentry:sentry-logback:6.5.0")
+	implementation ("io.sentry:sentry-logback:6.7.0")
 	runtimeOnly ("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
 }
 
