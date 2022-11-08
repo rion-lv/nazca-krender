@@ -28,7 +28,7 @@ dependencies {
 	implementation ("com.squareup.okhttp3:okhttp:4.0.1")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	implementation("com.jayway.jsonpath:json-path:2.4.0")
+	implementation("com.jayway.jsonpath:json-path:2.7.0")
 	implementation("io.github.microutils:kotlin-logging:1.6.24")
 	implementation("org.apache.commons:commons-lang3:3.5")
 	implementation("net.logstash.logback:logstash-logback-encoder:5.0")
